@@ -1,0 +1,42 @@
+{% set post = __SELF__.post %}
+<div class="row">
+    <div class="col-lg-9">
+        <div class="cleanse-article">
+            <div class="article-intro">
+                <div>
+                    <h1>{{ post.title }}</h1>
+                    <p class="lead">by {{ post.user.full_name }} on <time datetime="{{ post.published_at }}">{{ post.published_at|date('M d, Y') }}</time></p>
+                </div>
+                {% if post.featured_images.count %}
+                <div class="featured-images text-center">
+                    {% for image in post.featured_images %}
+                    <img
+                            data-src="{{ image.filename }}"
+                            src="{{ image.path }}"
+                            alt="{{ image.description }}" />
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <article id="article" class="content">
+                {{ post.content_html|raw }}
+            </article>
+
+            <p class="info">
+                Posted
+                {% if post.categories.count %} in
+                {% for category in post.categories %}
+                <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                {% endif %}
+                on {{ post.published_at|date('M d, Y') }}
+            </p>
+        </div>
+    </div>
+    <div class="col-lg-3 cleanse-toc">
+        <div id="blog-toc" class="btn-group-vertical btn-group-sm">
+            <a tag="top" class="btn btn-secondary">Top</a>
+        </div>
+    </div>
+</div>

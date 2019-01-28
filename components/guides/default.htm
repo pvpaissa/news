@@ -1,0 +1,21 @@
+<div class="basic-page">
+    <div class="container">
+        <div class="page-title">
+            <h1>Job Guides</h1>
+            <div class="sub-box"></div>
+        </div>
+
+        <div class="row">
+            {% for job in jobs %}
+            <div class="col-md-3 col-6 guides-block">
+                <div class="guides-job guides-{{ job.name|slug }} d-flex flex-column">
+                    <h4 class="guides-job-title sr-only">{{ job.name }}</h4>
+                    <h4 class="guides-job-abbr">{{ job.abbr|upper }}</h4>
+                    <!-- Temp --><img width="64" src="{{ '/assets/images/paissa-logo.svg'|theme }}"
+                                      alt="{{ job.name }} Symbol">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

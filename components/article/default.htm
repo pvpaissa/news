@@ -1,0 +1,98 @@
+<div id="article-wrapper" class="hero-content">
+    {% if article.featured_images.count %}
+    {% for image in article.featured_images %}
+    <img
+            class="d-block"
+            data-src="{{ image.filename }}"
+            src="{{ image.path }}"
+            alt="{{ article.title }}" />
+    {% endfor %}
+    {% else %}
+    <img
+            class="d-block"
+            data-src="/plugins/cleanse/news/assets/images/default-article.jpg"
+            src="/plugins/cleanse/news/assets/images/default-article.jpg"
+            alt="{{ article.title }}" />
+    {% endif %}
+
+    <div class="carousel-caption">
+        <div class="container">
+            <div class="col-lg-6">
+                <h1 class="d-inline-block">{{ article.title }}</h1>
+                <p class="lead">
+                    by {{ article.user.full_name }} on
+                    <time datetime="{{ article.published_at }}">{{ article.published_at|date('M d, Y') }}</time>
+                </p>
+                <p id="top" class="tags">
+                    Posted
+                    {% if article.categories.count %} in
+                    {% for category in article.categories %}
+                    <a href="/articles/category/{{ category.slug }}">{{ category.name }}</a>
+                    {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="article-content" class="container">
+    <div class="row">
+        <article class="col-lg-8 pt-4 pb-5">
+            {{ article.content_html|raw }}
+        </article>
+        <div id="related-articles" class="col-lg-4 pt-4">
+            <h4>Related Articles</h4>
+            <div class="sub-box mb-4"></div>
+
+            <div class="related">
+                {% for related_article in related %}
+                <div class="article">
+                    {% if related_article.featured_images.count %}
+                    {% for image in related_article.featured_images %}
+                    <a href="/article/{{ related_article.slug }}">
+                    <img
+                            class="article-img-top"
+                            data-src="{{ image.filename }}"
+                            src="{{ image.path }}"
+                            alt="{{ related_article.title }}" />
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <a href="/article/{{ related_article.slug }}">
+                    <img
+                            class="article-img-top"
+                            data-src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                            src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                            alt="{{ related_article.title }}" />
+                    </a>
+                    {% endif %}
+                    <div class="article-tag-date">
+                        <p class="article-tag">
+                            {% for related_category in related_article.categories|slice(0, 1) %}
+                            <a href="/articles/category/{{ related_category.slug }}">
+                            {{ related_category.name }}{% if not loop.last %} {% endif %}
+                            </a>
+                            {% endfor %}
+                        </p>
+                        <p class="article-date">{{ related_article.published_at|timediff }}</p>
+                    </div>
+
+                    <div class="article-body">
+                        <h5 class="article-title"><a href="/article/{{ related_article.slug }}">
+                            {{ related_article.title }}
+                        </a></h5>
+                        <p class="article-text">{{ related_article.excerpt|raw }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <a class="btn btn-outline-primary" href="#top">Back to the top</a>
+        </div>
+    </div>
+</div>

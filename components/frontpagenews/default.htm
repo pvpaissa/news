@@ -1,0 +1,42 @@
+{% set posts = __SELF__.posts %}
+
+<div class="post-list">
+    {% for post in posts %}
+        <div class="cleanse-news-post">
+            <div class="cleanse-title-author">
+                <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                <p class="mt-0 lead">by {{ post.user.full_name }} on <time datetime="{{ post.published_at }}">{{ post.published_at|date('M d, Y') }}</time></p>
+            </div>
+
+            {% if post.featured_images.count %}
+            <div class="mb-2 featured-images text-center">
+                {% for image in post.featured_images %}
+                <img
+                        data-src="{{ image.filename }}"
+                        src="{{ image.path }}"
+                        alt="{{ image.description }}" />
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="excerpt">
+                {{ post.content_html|raw }}
+            </div>
+
+            <div class="d-flex">
+                <div class="ml-auto">
+                    Tags:
+                    {% for category in post.categories %}
+                    <a class="badge badge-default"href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %} {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="no-data">{{ noPostsMessage }}</div>
+    {% endfor %}
+</div>
+
+<nav aria-label="Front page news pagination.">
+    {{ posts.render|raw }}
+</nav>

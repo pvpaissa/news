@@ -1,0 +1,93 @@
+<section id="masthead">
+    <div id="articleCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#articleCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#articleCarousel" data-slide-to="1"></li>
+            <li data-target="#articleCarousel" data-slide-to="2"></li>
+            <li data-target="#articleCarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+            {% set firstItem = posts|first %}
+            {% for post in posts|slice(0, 4) %}
+            <div class="carousel-item{% if firstItem == post %} active{% endif %}">
+                {% if post.featured_images.count %}
+                {% for image in post.featured_images %}
+                <img
+                        class="d-block"
+                        data-src="{{ image.filename }}"
+                        src="{{ image.path }}"
+                        alt="{{ post.title }}" />
+                {% endfor %}
+                {% else %}
+                <img
+                        class="d-block"
+                        data-src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                        src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                        alt="{{ post.title }}" />
+                {% endif %}
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="col-lg-6">
+                            <h4 class="d-block py-3 mb-3">{{ post.title }}</h4>
+                            <a href="/article/{{ post.slug }}" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="recent-updates">
+    <div class="container">
+        <a class="d-inline-block mb-4" href="/articles/category/news">
+            <h4>Latest News</h4>
+            <div class="sub-box"></div>
+        </a>
+        {% set cols = 2 %}
+        {% for post in posts|slice(4, 4) %}
+        {% if loop.index0 % cols == 0 %}
+        <div class="recent-articles mb-3">
+            {% endif %}
+            <div class="article">
+                {% if post.featured_images.count %}
+                {% for image in post.featured_images %}
+                <img
+                        class="article-img-top"
+                        data-src="{{ image.filename }}"
+                        src="{{ image.path }}"
+                        alt="{{ post.title }}" />
+                {% endfor %}
+                {% else %}
+                <img
+                        class="article-img-top"
+                        data-src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                        src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                        alt="{{ post.title }}" />
+                {% endif %}
+                <div class="article-tag-date">
+                    <p class="article-tag">
+                        {% for category in post.categories|slice(0, 1) %}
+                        {{ category.name }}{% if not loop.last %} {% endif %}
+                        {% endfor %}
+                    </p>
+                    <p class="article-date">{{ post.published_at|timediff }}</p>
+                </div>
+
+                <div class="article-body">
+                    <h5 class="article-title"><a href="/article/{{ post.slug }}">{{ post.title }}</a></h5>
+                    <p class="article-text">{{ post.excerpt|raw }}</p>
+                </div>
+            </div>
+            {% if (loop.index0 % cols == cols - 1 or loop.last) %}
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <div class="more-news text-center">
+            <hr class="d-none d-md-block">
+            <a class="btn btn-outline-primary btn-lg btn-md-block" href="/articles">View All</a>
+        </div>
+    </div>
+</section>
