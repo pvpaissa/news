@@ -21,15 +21,15 @@ class Plugin extends PluginBase
         return [
             'Cleanse\News\Components\Index'     => 'cleanseNewsIndex',
             'Cleanse\News\Components\Article'   => 'cleanseNewsArticle',
-            'Cleanse\News\Components\Articles'   => 'cleanseNewsArticles', //maybe create multiple layouts
-            'Cleanse\News\Components\Guides'   => 'cleanseNewsGuides', //??^Maybe make this a hard coded page?
+            'Cleanse\News\Components\Articles'  => 'cleanseNewsArticles', //maybe create multiple layouts
+            'Cleanse\News\Components\Guides'    => 'cleanseNewsGuides', //??^Maybe make this a hard coded page?
 
-            //Rename Rework
-            'Cleanse\News\Components\Carousel' => 'newsPvPaissaCarousel',
-            'Cleanse\News\Components\Summarized' => 'newsFrontOneSummary',
+            //Rename Rework/Delete
+            'Cleanse\News\Components\Carousel'      => 'newsPvPaissaCarousel',
+            'Cleanse\News\Components\Summarized'    => 'newsFrontOneSummary',
             'Cleanse\News\Components\FrontPageNews' => 'newsFrontOne',
-            'Cleanse\News\Components\ArticlePost' => 'pvpaissaArticle',
-            'Cleanse\News\Components\ArticlePosts' => 'pvpaissaArticles'
+            'Cleanse\News\Components\ArticlePost'   => 'pvpaissaArticle',
+            'Cleanse\News\Components\ArticlePosts'  => 'pvpaissaArticles'
         ];
     }
 

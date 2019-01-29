@@ -1,0 +1,65 @@
+<div class="basic-page">
+    <div class="container">
+        <div class="page-title">
+            <h1>Article List</h1>
+            <div class="sub-box"></div>
+        </div>
+    </div>
+
+    <div class="container basic-content">
+        <div class="row">
+            <div class="col-lg-8">
+                {% for article in articles %}
+                <div class="article">
+                    {% if article.featured_images.count %}
+                    {% for image in article.featured_images %}
+                    <a href="/article/{{ article.slug }}">
+                        <img
+                                class="article-img-top"
+                                data-src="{{ image.filename }}"
+                                src="{{ image.path }}"
+                                alt="{{ article.title }}" />
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <a href="/article/{{ article.slug }}">
+                        <img
+                                class="article-img-top"
+                                data-src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                                src="/plugins/cleanse/news/assets/images/default-article.jpg"
+                                alt="{{ article.title }}" />
+                    </a>
+                    {% endif %}
+                    <div class="article-tag-date">
+                        <p class="article-tag">
+                            {% for category in article.categories|slice(0, 1) %}
+                            <a href="/articles/category/{{ category.slug }}">
+                                {{ category.name }}{% if not loop.last %} {% endif %}
+                            </a>
+                            {% endfor %}
+                        </p>
+                        <p class="article-date">{{ article.published_at|timediff }}</p>
+                    </div>
+
+                    <div class="article-body">
+                        <h5 class="article-title"><a href="/article/{{ article.slug }}">
+                            {{ article.title }}
+                        </a></h5>
+                        <p class="article-text">{{ article.excerpt|raw }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <nav class="container article-pagination" aria-label="Article pagination.">
+                    {{ articles.render|raw }}
+                </nav>
+            </div>
+
+            <div class="col-lg-4 side-bar">
+                <h4>Category List</h4>
+                <div class="sub-box mb-4"></div>
+                {% component 'blogCategories' %}
+            </div>
+        </div>
+    </div>
+</div>
