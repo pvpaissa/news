@@ -11,11 +11,45 @@
                 <div class="guides-job guides-{{ job.name|slug }} d-flex flex-column">
                     <h4 class="guides-job-title sr-only">{{ job.name }}</h4>
                     <h4 class="guides-job-abbr">{{ job.abbr|upper }}</h4>
-                    <!-- Temp --><img width="64" src="{{ '/assets/images/paissa-logo.svg'|theme }}"
-                                      alt="{{ job.name }} Symbol">
+                    <div class="job-icon">
+                        {{ source('./themes/pvpaissa_organization/assets/images/' ~ job.abbr|upper ~ '.svg') }}
+                    </div>
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
+
+<svg id="svg-filter">
+    <filter id="tankShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha">
+            <feFuncR type="discrete" tableValues="0"/>
+            <feFuncG type="discrete" tableValues="0"/>
+            <feFuncB type="discrete" tableValues=".8"/>
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="2"/>
+        <feOffset dx="1" dy="4" result="shadow"/>
+        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+    </filter>
+    <filter id="damageShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha">
+            <feFuncR type="discrete" tableValues=".5"/>
+            <feFuncG type="discrete" tableValues="0"/>
+            <feFuncB type="discrete" tableValues="0"/>
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="2"/>
+        <feOffset dx="1" dy="4" result="shadow"/>
+        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+    </filter>
+    <filter id="healerShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha">
+            <feFuncR type="discrete" tableValues="0"/>
+            <feFuncG type="discrete" tableValues=".8"/>
+            <feFuncB type="discrete" tableValues="0"/>
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="2"/>
+        <feOffset dx="1" dy="4" result="shadow"/>
+        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
+    </filter>
+</svg>
