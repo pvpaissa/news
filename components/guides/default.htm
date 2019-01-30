@@ -1,4 +1,4 @@
-<div class="basic-page">
+<div class="basic-page guides-page">
     <div class="container">
         <div class="page-title">
             <h1>Job Guides</h1>
@@ -7,6 +7,7 @@
 
         <div class="row">
             {% for job in jobs %}
+            <a href="/articles/category/{{ job.name|slug }}">
             <div class="col-md-3 col-6 guides-block">
                 <div class="guides-job guides-{{ job.name|slug }} d-flex flex-column">
                     <h4 class="guides-job-title sr-only">{{ job.name }}</h4>
@@ -16,6 +17,7 @@
                     </div>
                 </div>
             </div>
+            </a>
             {% endfor %}
         </div>
     </div>
