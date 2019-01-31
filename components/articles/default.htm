@@ -1,7 +1,7 @@
 <div class="basic-page">
     <div class="container">
         <div class="page-title">
-            <h1>Article List</h1>
+            <h1>Article List{% if category %}<span class="text-primary"> {{ category.name }}</span>{% endif %}</h1>
             <div class="sub-box"></div>
         </div>
     </div>

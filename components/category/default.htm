@@ -1,5 +1,5 @@
 {% if __SELF__.categories %}
-    <div class="category-list list-group list-group-flush">
+    <div class="category-group">
         {% partial __SELF__ ~ "::items"
             categories = __SELF__.categories
             currentCategorySlug = __SELF__.currentCategorySlug
