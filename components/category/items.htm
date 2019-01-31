@@ -1,0 +1,16 @@
+{% for category in categories %}
+    {% set postCount = category.post_count %}
+    {% if category.slug == currentCategorySlug %}
+    {% set isActive = ' active' %}
+        {% partial __SELF__ ~ "::_active"
+            active_category = category
+            cat_postCount = postCount
+        %}
+    {% else %}
+    {% set isActive = '' %}
+        {% partial __SELF__ ~ "::_list-item"
+            link_category = category
+            cat_postCount = postCount
+        %}
+    {% endif %}
+{% endfor %}

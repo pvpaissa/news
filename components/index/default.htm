@@ -69,7 +69,9 @@
                 <div class="article-tag-date">
                     <p class="article-tag">
                         {% for category in post.categories|slice(0, 1) %}
-                        {{ category.name }}{% if not loop.last %} {% endif %}
+                        <a href="/articles/category/{{ category.slug }}">
+                            {{ category.name }}{% if not loop.last %} {% endif %}
+                        </a>
                         {% endfor %}
                     </p>
                     <p class="article-date">{{ post.published_at|timediff }}</p>

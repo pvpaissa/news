@@ -1,0 +1,7 @@
+<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+   href="{{ link_category.url }}">
+    {{ link_category.name }}
+    {% if cat_postCount %}
+    <span class="badge badge-primary">{{ cat_postCount }}</span>
+    {% endif %}
+</a>
