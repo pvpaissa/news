@@ -23,35 +23,4 @@
     </div>
 </div>
 
-<svg id="svg-filter">
-    <filter id="tankShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feComponentTransfer in="SourceAlpha">
-            <feFuncR type="discrete" tableValues="0"/>
-            <feFuncG type="discrete" tableValues="0"/>
-            <feFuncB type="discrete" tableValues=".8"/>
-        </feComponentTransfer>
-        <feGaussianBlur stdDeviation="2"/>
-        <feOffset dx="1" dy="4" result="shadow"/>
-        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-    </filter>
-    <filter id="damageShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feComponentTransfer in="SourceAlpha">
-            <feFuncR type="discrete" tableValues=".5"/>
-            <feFuncG type="discrete" tableValues="0"/>
-            <feFuncB type="discrete" tableValues="0"/>
-        </feComponentTransfer>
-        <feGaussianBlur stdDeviation="2"/>
-        <feOffset dx="1" dy="4" result="shadow"/>
-        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-    </filter>
-    <filter id="healerShadow" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-        <feComponentTransfer in="SourceAlpha">
-            <feFuncR type="discrete" tableValues="0"/>
-            <feFuncG type="discrete" tableValues=".8"/>
-            <feFuncB type="discrete" tableValues="0"/>
-        </feComponentTransfer>
-        <feGaussianBlur stdDeviation="2"/>
-        <feOffset dx="1" dy="4" result="shadow"/>
-        <feComposite in="SourceGraphic" in2="shadow" operator="over"/>
-    </filter>
-</svg>
+{% partial __SELF__ ~ "::svg-filters" %}
