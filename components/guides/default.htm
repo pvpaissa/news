@@ -20,6 +20,13 @@
             </a>
             {% endfor %}
         </div>
+
+        {% if jobs|length < 6 %}
+        <div class="more-news text-center mt-5">
+            <hr class="d-none d-md-block">
+            <a class="btn btn-outline-primary btn-lg btn-md-block" href="/guides">View All</a>
+        </div>
+        {% endif %}
     </div>
 </div>
 
