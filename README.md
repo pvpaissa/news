@@ -2,4 +2,4 @@
 Guides, Articles, Index Page components.
 
 ### Requirement
-Requires https://github.com/rainlab/blog-plugin
+Rainlab Blog https://github.com/rainlab/blog-plugin
