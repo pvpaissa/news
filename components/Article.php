@@ -90,6 +90,10 @@ class Article extends ComponentBase
 
     private function loadRelated()
     {
+        if (!isset($this->post->id)) {
+            return [];
+        }
+
         $posts = ArticlePost::isPublished()
             ->where('id', '<>', $this->post->id)
             ->whereHas('categories', function($tag) {
