@@ -51,6 +51,7 @@
         <div class="recent-articles mb-3">
             {% endif %}
             <div class="article">
+                <a href="/article/{{ post.slug }}">
                 {% if post.featured_images.count %}
                 {% for image in post.featured_images %}
                 <img
@@ -66,6 +67,7 @@
                         src="/plugins/cleanse/news/assets/images/default-article.jpg"
                         alt="{{ post.title }}" />
                 {% endif %}
+                </a>
                 <div class="article-tag-date">
                     <p class="article-tag">
                         {% for category in post.categories|slice(0, 1) %}
