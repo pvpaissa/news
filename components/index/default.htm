@@ -56,8 +56,7 @@
                 {% for image in post.featured_images %}
                 <img
                         class="article-img-top"
-                        data-src="{{ image.filename }}"
-                        src="{{ image.path }}"
+                        src="{{ image.getThumb(500, 250) }}"
                         alt="{{ post.title }}" />
                 {% endfor %}
                 {% else %}

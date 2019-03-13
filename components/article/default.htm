@@ -55,7 +55,7 @@
                     <img
                             class="article-img-top"
                             data-src="{{ image.filename }}"
-                            src="{{ image.path }}"
+                            src="{{ image.getThumb(350, auto) }}"
                             alt="{{ related_article.title }}" />
                     </a>
                     {% endfor %}

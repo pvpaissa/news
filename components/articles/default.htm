@@ -16,8 +16,7 @@
                     <a href="/article/{{ article.slug }}">
                         <img
                                 class="article-img-top"
-                                data-src="{{ image.filename }}"
-                                src="{{ image.path }}"
+                                src="{{ image.getThumb(729, auto) }}"
                                 alt="{{ article.title }}" />
                     </a>
                     {% endfor %}
