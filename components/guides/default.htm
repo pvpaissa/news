@@ -6,8 +6,12 @@
         </div>
 
         <div class="row">
-            {% for job in jobs %}
+        {% for job in jobs %}
+        {% if job.url %}
+            <a href="{{ job.url }}">
+        {% else %}
             <a href="/articles/category/{{ job.name|slug }}">
+        {% endif %}
             <div class="col-md-3 col-6 guides-block">
                 <div class="guides-job guides-{{ job.name|slug }} d-flex flex-column">
                     <h4 class="guides-job-title sr-only">{{ job.name }}</h4>
@@ -18,7 +22,7 @@
                 </div>
             </div>
             </a>
-            {% endfor %}
+        {% endfor %}
         </div>
 
         {% if jobs|length < 6 %}

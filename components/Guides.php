@@ -52,23 +52,23 @@ class Guides extends ComponentBase
     private function getJobsList()
     {
         return [
-            ['name' => 'Paladin', 'abbr' => 'pld', 'role' => 'tank'],
-            ['name' => 'Warrior', 'abbr' => 'war', 'role' => 'tank'],
+            ['name' => 'Paladin', 'abbr' => 'pld', 'role' => 'tank', 'url' => '/article/paladin-feast-guide'],
+            ['name' => 'Warrior', 'abbr' => 'war', 'role' => 'tank', 'url' => '/article/warrior-feast-guide'],
             ['name' => 'Dark Knight', 'abbr' => 'drk', 'role' => 'tank'],
 
             ['name' => 'Monk', 'abbr' => 'mnk', 'role' => 'melee'],
-            ['name' => 'Dragoon', 'abbr' => 'drg', 'role' => 'melee'],
+            ['name' => 'Dragoon', 'abbr' => 'drg', 'role' => 'melee', 'url' => '/article/dragoon-feast-guide'],
             ['name' => 'Ninja', 'abbr' => 'nin', 'role' => 'melee'],
-            ['name' => 'Samurai', 'abbr' => 'sam', 'role' => 'melee'],
+            ['name' => 'Samurai', 'abbr' => 'sam', 'role' => 'melee', 'url' => '/article/samurai-feast-guide'],
 
-            ['name' => 'Bard', 'abbr' => 'brd', 'role' => 'ranged'],
-            ['name' => 'Machinist', 'abbr' => 'mch', 'role' => 'ranged'],
+            ['name' => 'Bard', 'abbr' => 'brd', 'role' => 'ranged', 'url' => '/article/bard-feast-guide'],
+            ['name' => 'Machinist', 'abbr' => 'mch', 'role' => 'ranged', 'url' => '/article/machinist-feast-guide'],
 
-            ['name' => 'Black Mage', 'abbr' => 'blm', 'role' => 'ranged'],
-            ['name' => 'Summoner', 'abbr' => 'smn', 'role' => 'ranged'],
-            ['name' => 'Red Mage', 'abbr' => 'rdm', 'role' => 'ranged'],
+            ['name' => 'Black Mage', 'abbr' => 'blm', 'role' => 'ranged', 'url' => '/article/black-mage-feast-guide'],
+            ['name' => 'Summoner', 'abbr' => 'smn', 'role' => 'ranged', 'url' => '/article/summoner-feast-guide'],
+            ['name' => 'Red Mage', 'abbr' => 'rdm', 'role' => 'ranged', 'url' => '/article/red-mage-feast-guide'],
 
-            ['name' => 'White Mage', 'abbr' => 'whm', 'role' => 'healer'],
+            ['name' => 'White Mage', 'abbr' => 'whm', 'role' => 'healer', 'url' => '/article/white-mage-feast-guide'],
             ['name' => 'Scholar', 'abbr' => 'sch', 'role' => 'healer'],
             ['name' => 'Astrologian', 'abbr' => 'ast', 'role' => 'healer']
         ];
