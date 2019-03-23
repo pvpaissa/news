@@ -55,6 +55,7 @@ class Guides extends ComponentBase
             ['name' => 'Paladin', 'abbr' => 'pld', 'role' => 'tank', 'url' => '/article/paladin-feast-guide'],
             ['name' => 'Warrior', 'abbr' => 'war', 'role' => 'tank', 'url' => '/article/warrior-feast-guide'],
             ['name' => 'Dark Knight', 'abbr' => 'drk', 'role' => 'tank'],
+            ['name' => 'Gunbreaker', 'abbr' => 'gun', 'role' => 'tank'],
 
             ['name' => 'Monk', 'abbr' => 'mnk', 'role' => 'melee'],
             ['name' => 'Dragoon', 'abbr' => 'drg', 'role' => 'melee', 'url' => '/article/dragoon-feast-guide'],
@@ -63,6 +64,7 @@ class Guides extends ComponentBase
 
             ['name' => 'Bard', 'abbr' => 'brd', 'role' => 'ranged', 'url' => '/article/bard-feast-guide'],
             ['name' => 'Machinist', 'abbr' => 'mch', 'role' => 'ranged', 'url' => '/article/machinist-feast-guide'],
+            ['name' => 'Dancer', 'abbr' => 'dnc', 'role' => 'ranged'],
 
             ['name' => 'Black Mage', 'abbr' => 'blm', 'role' => 'ranged', 'url' => '/article/black-mage-feast-guide'],
             ['name' => 'Summoner', 'abbr' => 'smn', 'role' => 'ranged', 'url' => '/article/summoner-feast-guide'],
