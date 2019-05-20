@@ -134,6 +134,7 @@ class Index extends ComponentBase
 
         $this->category = $this->page['category'] = $this->loadCategory();
         $this->posts = $this->page['posts'] = $this->listPosts();
+        $this->page['stream_live'] = $this->getPvPaissaStream();
 
         /*
          * If the page number is not valid, redirect
@@ -200,5 +201,11 @@ class Index extends ComponentBase
         }
 
         return $category;
+    }
+
+    private function getPvPaissaStream()
+    {
+        return \Cleanse\Twitch\Models\Streamer::where(['name' => 'pvpaissa', 'live' => 1])
+            ->first();
     }
 }
